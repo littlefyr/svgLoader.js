@@ -21,7 +21,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-!function (window) {
+(function (window) {
     'use strict';
     var document = window.document,
         Math = window.Math;
@@ -76,37 +76,42 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      function svgLoader(container, height, width, sections, arcSize, innerRadius, outerRadius, color, opacity, cwTime, ccwTime){
         height = parseInt(height, 10);
         width = parseInt(width, 10);
-        var svg = create('svg', {
+
+        var centerY = height/2, 
+            centerX = width/2,
+            svg = create('svg', {
                 width: width+'px',
                 height: height+'px',
                 x: '50%',
                 y: '50%',
-                viewBox: '0 0 200 200',
+                viewBox: '0 0 height width',
                 preserveAspectRatio: 'xMidYMid meet'
-            }, create('g', {transform: 'translate(-' + (width/2).toString(10) +',-' + (height/2).toString(10) +')'},create('svg', {height:'100%', width:'100%', version:'1.1'}, container))),
+            }, create('g', {transform: 'translate(-' + centerX.toString(10) +',-' + centerY.toString(10) +')'},create('svg', {height:'100%', width:'100%', version:'1.1'}, container))),
             cw = create('g',{}, svg),
             ccw = create('g', {}, svg),
             section = arcSize/sections,
+            circle0 = [0, centerX, centerY].join(' '),
+            circle360 = [360, centerX, centerY].join(' '),
             i;
 
         for(i=0; i<sections; i++){
             create('path', {
                 fill: color,
                 'fill-opacity': opacity*i/sections,
-                d: annularSector(100, 100, section*i, section*(i+1), innerRadius, outerRadius)
+                d: annularSector(centerX, centerY, section*i, section*(i+1), innerRadius, outerRadius)
             }, cw);
             create('path', {
                 fill: color,
                 'fill-opacity': opacity*i/sections,
-                d: annularSector(100, 100, -section*i, -section*(i+1), innerRadius, outerRadius)
+                d: annularSector(centerX, centerY, -section*i, -section*(i+1), innerRadius, outerRadius)
             }, ccw);
         }
         create('animateTransform', {
             attributeType: 'xml',
             attributeName: 'transform',
             type: 'rotate',
-            from: '0 100 100',
-            to: '360 100 100',
+            from: circle0,
+            to: circle360,
             dur: cwTime,
             repeatCount: 'indefinite'
         }, cw);
@@ -114,15 +119,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             attributeType: 'xml',
             attributeName: 'transform',
             type: 'rotate',
-            to: '0 100 100',
-            from: '360 100 100',
+            to: circle0,
+            from: circle360,
             dur: ccwTime,
             repeatCount: 'indefinite'
         }, ccw);
-    };
+    }
     window.svgLoader = svgLoader;
     if ( typeof define === "function" ) {
         define( "svgLoader", [], function () { return svgLoader; } );
     }
 
-}(window);
+}(window));
