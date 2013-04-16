@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="svgLoader.js : A simple JavaScript file to create a properly centered loader image. " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>svgLoader.js</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/littlefyr/svgLoader.js">View on GitHub</a>
+
+          <h1 id="project_title">svgLoader.js</h1>
+          <h2 id="project_tagline">A simple JavaScript file to create a properly centered loader image. </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/littlefyr/svgLoader.js/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/littlefyr/svgLoader.js/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>AJAX loading spinners should be easy</h1>
+
+<p>Generally, however its more work than its worth often if you're using GIFs, you have to wait for the images to load and you can't use alpha transparency. Animated PNGs are a bust so you're left with using JavaScript. There are many good canvas scripts our there but this one uses SVG. Neither SVG nor canvas are supported in IE8 but you have many options to work around. </p>
+
+<p>This library creates a loader similar to what you find in Android ICS devices, two counter rotating arced gradients. With this library, you can create the loader of any size and color you wish and it will be vertically and horizontally centered in the element in which you place it. Ideally the loading container should contain nothing else, otherwise you may need to add some css of the form:</p>
+
+<div class="highlight"><pre><span class="nf">#Loader</span> <span class="nt">svg</span><span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span>
+  <span class="k">top</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="k">left</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="k">z-index</span><span class="o">:</span> <span class="m">0</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>You can use the loader like this:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'Example1'</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+    <span class="nx">svgLoader</span><span class="p">(</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'Example1'</span><span class="p">),</span>    <span class="c1">//Container for loader</span>
+        <span class="mi">100</span><span class="p">,</span>                                    <span class="c1">//height of spinner in px</span>
+        <span class="mi">100</span><span class="p">,</span>                                    <span class="c1">//width of spinner in px</span>
+        <span class="mi">100</span><span class="p">,</span>                                    <span class="c1">//number of sections to divide the arcs into</span>
+        <span class="mi">360</span><span class="p">,</span>                                    <span class="c1">//the number of degrees the arc will cover</span>
+        <span class="mi">70</span><span class="p">,</span>                                     <span class="c1">//the inner radius of the arc</span>
+        <span class="mi">90</span><span class="p">,</span>                                     <span class="c1">//the outer radius of the arc</span>
+        <span class="s1">'#000000'</span><span class="p">,</span>                              <span class="c1">//the color of the arc</span>
+        <span class="mf">0.5</span><span class="p">,</span>                                    <span class="c1">//the opacity of the leading section </span>
+        <span class="s1">'4s'</span><span class="p">,</span>                                   <span class="c1">//the time it takes for the clock-wise arc to complete a circle</span>
+        <span class="s1">'2s'</span>                                    <span class="c1">//the time it takes for the counterclock-wise arc to complete a circle</span>
+    <span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h3>Authors and Contributors</h3>
+
+<p>Adam van den Hoven (<a href="https://github.com/littlefyr" class="user-mention">@littlefyr</a>) is responsible for this mess. However it is <a href="http://jsfiddle.net/silvinci/TDW89/">based off the code in this JSFiddle</a></p>
+
+<h3>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">svgLoader.js maintained by <a href="https://github.com/littlefyr">littlefyr</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
