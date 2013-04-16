@@ -4,10 +4,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
         <script src='https://raw.github.com/littlefyr/svgLoader.js/master/svgLoader.js'></script>
         <style>
+        html, body{
+            margin:0;
+            padding:0;
+        }
 #Example1{
     height: 400px;
     width: 400px;
     border:1px solid black;
+}
+#Example2{
+    height: 400px;
+    width: 100%;
+    background:black;
 }
         </style>
     </head>
@@ -44,5 +53,40 @@
         '4s',                                   //cwTime
         '2s'                                    //ccwTime
     );
-&lt;/script&gt;</code></pre>
+&lt;/script></code></pre>
+
+        <div id='Example2'></div>
+        <script>
+            svgLoader(
+                document.getElementById('Example1'),    //Container for loader
+                100,                                    //height of spinner in pix
+                100,                                    //width
+                100,                                    //sections
+                90,                                    //arcSize
+                70,                                     //innerRadius
+                90,                                     //outerRadius
+                '#ffffff',                              //color
+                0.5,                                    //opacity
+                '4s',                                   //cwTime
+                '2s'                                    //ccwTime
+            );
+        </script>
+        <pre><code>&lt;div id='Example1'&gt;&lt;/div&gt;
+&lt;script&gt;
+    svgLoader(
+        document.getElementById('Example1'),    //Container for loader
+        100,                                    //height of spinner in pix
+        100,                                    //width
+        100,                                    //sections
+        360,                                    //arcSize
+        70,                                     //innerRadius
+        90,                                     //outerRadius
+        '#000000',                              //color
+        0.5,                                    //opacity
+        '4s',                                   //cwTime
+        '2s'                                    //ccwTime
+    );
+&lt;/script></code></pre>
+
+
 </html>
